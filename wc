@@ -1,0 +1,42 @@
+#!/usr/bin/python
+
+#Final Diagramación Lógica / Fecha: 12/7/18 
+#Tema: Crear un WC - Contador de palabras, líneas y caracteres
+#Alumno: Alberto Campagna
+#IFTS 18 - Analista de Sistemas
+
+print ("-------------------------------------------------------")
+print ("Programa WC / Contador de Palabras, Líneas y Caracteres")
+print ("-------------------------------------------------------")
+
+ingreso = input('Ingrese el archivo: ')
+
+#Abro el archivo, lo asigno en la variable archivo y lo leo.
+archivo = open(ingreso,'r')
+#Formateo correctamente el contenido
+contenido = archivo.read()
+contenido = contenido.replace('\n','') #Saco los punto y aparte.
+contenido = contenido.replace('.',' ') #Le pongo espacios a los puntos.
+contenido2 = contenido.split(" ") #Separo en espacios.
+#print (contenido2) #Si quiero ver la salida, descomentar el # de la izquierda
+
+# --- PALABRAS --- #
+cant_palabras = len(contenido2)
+#print (cant_palabras) #Si quiero ver la salida, descomentar el # de la izquierda
+print('El texto contiene', cant_palabras - 1, 'palabras.')
+
+# --- PARRAFOS --- #
+parrafos = contenido.split('. ') #Separo por punto y aparte. Uso el contenido original
+#print (parrafos) #Si quiero ver la salida, descomentar el # de la izquierda
+cant_parrafos = len(parrafos)
+print('El texto contiene', cant_parrafos, 'párrafos.')
+
+# ---- LETRAS ---- #
+contenido2 = contenido.replace(" ", "") #saco los espacios asi no me los cuenta como letras
+#print (contenido2) #Si quiero ver la salida, descomentar el # de la izquierda
+letras = 0
+for i in contenido:
+    letras = letras + len(i)
+print('El texto contiene', letras, 'letras.')
+
+archivo.close()
